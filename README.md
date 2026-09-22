@@ -15,7 +15,7 @@ L'idea nasce dal tema del turismo più consapevole. Capire l'impatto ambientale 
 3. Quando i dati sono completi, il backend usa EcoFreight per calcolare le emissioni.
 4. La chat mostra la stima CO₂e insieme ai dati del viaggio.
 
-La conversazione viene salvata in SQLite. Questo permette all'assistente di ricordare, ad esempio, la tratta precedente quando l'utente modifica solo il peso del bagaglio.
+In locale la conversazione viene salvata in SQLite. Online Orizon usa PostgreSQL su Supabase, così le chat restano disponibili anche dopo un riavvio del servizio.
 
 ## Tecnologie utilizzate
 
@@ -23,7 +23,7 @@ La conversazione viene salvata in SQLite. Questo permette all'assistente di rico
 - Node.js ed Express per il backend
 - OpenAI per la parte conversazionale e il function calling
 - EcoFreight API per il calcolo delle emissioni
-- SQLite per salvare le conversazioni
+- SQLite in locale e PostgreSQL/Supabase per la memoria online
 
 ## Avvio del progetto
 
@@ -32,6 +32,7 @@ Prima di iniziare, crea un file `.env` copiando `.env.example` e inserisci le tu
 ```bash
 OPENAI_API_KEY=la_tua_chiave
 ECOFREIGHT_API_KEY=la_tua_chiave
+DATABASE_URL=la_stringa_di_connessione_supabase
 ```
 
 Installa le dipendenze e avvia l'app:
